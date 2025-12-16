@@ -3,15 +3,20 @@ package se.yrgo.libraryapp.validators;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.params.*;
+import org.junit.jupiter.params.provider.*;
 
 public class UsernameTest {
-    @Test
-    void correctUsername() {
-        assertTrue(Username.validate("bosse"));
+    @ParameterizedTest
+    @ValueSource(strings = {"Bosse_man@coolStuff", "@-_-."})
+    void correctUsername(String goodName) {
+        assertTrue(Username.validate(goodName));
     }
 
-    @Test
-    void incorrectUsername() {
-        assertFalse(Username.validate("name with space"));
+    @ParameterizedTest
+    @ValueSource(strings = {"Name with space", "tre", "*?!${"})
+    @EmptySource
+    void incorrectUsername(String badName) {
+        assertFalse(Username.validate(badName));
     }
 }
