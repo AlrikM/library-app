@@ -1,0 +1,6 @@
+curses
+insult
+jabberwockie
+evil
+bad
+devil
