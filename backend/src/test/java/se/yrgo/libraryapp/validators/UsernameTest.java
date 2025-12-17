@@ -7,13 +7,13 @@ import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
 
 public class UsernameTest {
-    @Disabled
+
     @ParameterizedTest
-    @ValueSource(strings = {"Bosse_man@coolStuff", "@-_-."})
+    @ValueSource(strings = {"Bosse_man78@cool", "@-_-."})
     void correctUsername(String goodName) {
         assertTrue(Username.validate(goodName));
     }
-    @Disabled
+
     @ParameterizedTest
     @ValueSource(strings = {"Name with space", "tre", "*?!${"})
     @EmptySource
